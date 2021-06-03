@@ -1,2 +1,9 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+
+<%= @user.name %>
+
+
+<% @user.created_events.each do |f| %>
+    <%= f.location %><br/>
+<% end %>

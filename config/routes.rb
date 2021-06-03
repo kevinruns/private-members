@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'events/new'
-  get 'events/create'
+  get 'events/new', to: "events#new"
+  post 'events/new', to: "events#create"
+
   get 'events/show'
   get 'events/index'
 
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  get '/users/:id', to: 'users#show', :as => :user
+  
   root to: "events#index"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,2 +1,39 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+
+<div class = "container">
+  <div class="row mt-5">
+    <div class="col mx-5">
+  
+      <h1>New event</h1>
+
+      <%= form_with model: @event, url: events_new_path do |form|%>
+
+        <% if @event.errors.any? %>
+          <div class="alert">
+            <% @event.errors.full_messages.each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= form.label :location %>
+          <%= form.text_field :location, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :event_on %>
+          <%= form.text_field :event_on,  class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.number_field :event_creator_id,
+          id: :event_event_creator_id, class: "form-control", value: Current.user.id, type: :hidden %>
+        </div>
+
+        <%= form.submit class: "btn btn-primary" %>
+      <%end%>
+
+    </div>
+  </div>
+</div>
+

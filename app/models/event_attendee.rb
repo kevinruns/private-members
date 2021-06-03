@@ -1,2 +1,0 @@
-class EventAttendee < ApplicationRecord
-end
