@@ -1,9 +1,21 @@
+
+
 <h1>Users#show</h1>
 
 
-<%= @user.name %>
+<div class = "container">
+  <div class="row mt-5">
 
+    <div class="col mx-5">
+      <%= @user.name %>
+    </div>
 
-<% @user.created_events.each do |f| %>
-    <%= f.location %><br/>
-<% end %>
+    <div class="col mx-5">
+        <% @user.created_events.each do |f| %>
+            <%= f.location %>  
+            <%= f.event_on %> <br/>
+        <% end %>
+    </div>
+
+  </div>
+</div>
