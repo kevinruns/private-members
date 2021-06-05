@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_105158) do
+ActiveRecord::Schema.define(version: 2021_06_04_170817) do
 
   create_table "event_attendings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_105158) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "events", "users", column: "event_creator_id"

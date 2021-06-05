@@ -8,6 +8,11 @@
     <%= form.text_field :username, class: "form-control" %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :password%>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
   <%= form.submit "Sign In", class: "btn btn-primary" %>
 
 <% end %>

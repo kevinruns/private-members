@@ -1,16 +1,20 @@
 
 
-<h1>Users#show</h1>
-
 
 <div class = "container">
   <div class="row mt-5">
 
-    <div class="col mx-5">
-      <%= @user.name %>
+    <div class="col-3 mx-3">
+      <div class="card">
+        <div class="card-body">
+            <%= @user.name %><br>
+            <%= @user.username %><br>
+            <%= @user.email %><br>
+        </div>
+      </div>
     </div>
 
-    <div class="col mx-5">
+    <div class="col-6 mx-3">
         <% @user.created_events.each do |f| %>
             <%= f.location %>  
             <%= f.event_on %> <br/>
