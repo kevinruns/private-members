@@ -1,0 +1,29 @@
+
+
+<% if events.empty? %>
+
+  <p>No events registered</p>
+
+<% else %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% events.each do |f| %>
+      <tr>
+        <th scope="row"><%= link_to f.name, event_path(f.id) %></th>
+        <td><%= f.location %></td>           
+        <td><%= f.event_on %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+
+<%end %>
+    

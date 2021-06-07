@@ -1,12 +1,21 @@
-<h1>Events#show</h1>
 
 
-<div class="card" style="width: 18rem;" >
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @event.name %></li>
-    <li class="list-group-item"><%= @event.location %></li>
-    <li class="list-group-item"><%= @event.event_on %></li>
-  </ul>
+<div class="container">
+  <div class="row">  
+    <div class="my-3">
+
+      <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        <%= @event.name %><br>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= @event.location %></li>
+        <li class="list-group-item"><%= @event.event_on %></li>
+        <li class="list-group-item"><%= User.find(@event.event_creator_id).username %></li>
+      </ul>
+      </div>
+
+
+    </div>
+  </div>
 </div>
-
-
