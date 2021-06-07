@@ -14,13 +14,15 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def index
+    @events = Event.all
   end
 
   def event_params
-    params.require(:event).permit(:location, :event_on, :event_creator_id)
+    params.require(:event).permit(:name, :location, :event_on, :event_creator_id)
   end
 
 

@@ -57,3 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # add bootstrap
 gem 'bootstrap', '~> 5.0.0'
+
+
+# date validator
+gem 'date_validator', '~> 0.11.0'

@@ -16,13 +16,18 @@
         <% end %>
 
         <div class="mb-3">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
           <%= form.label :location %>
           <%= form.text_field :location, class: "form-control" %>
         </div>
 
         <div class="mb-3">
           <%= form.label :event_on %>
-          <%= form.text_field :event_on,  class: "form-control" %>
+          <%= form.date_field :event_on,  class: "form-control" %>
         </div>
 
         <div class="mb-3">
