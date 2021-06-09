@@ -15,6 +15,9 @@
       </ul>
       </div>
 
+      <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
+is-fullwidth" %>
+
 
     </div>
   </div>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  patch "event_attendings", to: "event_attendings#attend", :as => :attend
+
   get '/users/:id', to: 'users#show', :as => :user
   
   root to: "events#index"
