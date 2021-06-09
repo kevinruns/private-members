@@ -4,16 +4,46 @@
   <div class="row">  
     <div class="my-3">
 
-      <div class="card" style="width: 18rem;">
-      <div class="card-header">
-        <%= @event.name %><br>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= @event.location %></li>
-        <li class="list-group-item"><%= @event.event_on %></li>
-        <li class="list-group-item"><%= User.find(@event.event_creator_id).username %></li>
-      </ul>
-      </div>
+
+      <table class="table w-50">
+        <tbody>
+          <tr class="card-header">
+            <th>Event name</th>
+            <td>
+              <%= @event.name %>
+            </td>
+          </tr>
+          <tr>
+            <th>Location</th>
+            <td>
+              <%= @event.location %>
+            </td>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <td>
+              <%= @event.event_on %>
+            </td>
+          </tr>
+          <tr>
+            <th>Event creator</th>
+            <td>
+              <%= User.find(@event.event_creator_id).username %>
+            </td>
+          </tr>
+          <tr>
+            <th>Event Attendees</th>
+              <td>
+              <% @event.event_attendings.each do |f| %>
+                <%= User.find( f.attendee_id ).username %>
+                <br>
+              <% end %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
 
       <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
 is-fullwidth" %>
