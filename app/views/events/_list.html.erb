@@ -18,7 +18,7 @@
     <tbody>
       <% events.each do |f| %>
       <tr>
-        <th scope="row"><%= link_to f.name, event_path(f.id) %></th>
+        <th scope="row"><%= link_to f.name, event_path(f.id), class: "text-decoration-none text-dark"%></th>
         <td><%= f.location %></td>           
         <td><%= f.event_on %></td>
         <td>

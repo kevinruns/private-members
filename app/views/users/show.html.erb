@@ -17,7 +17,24 @@
     </div>
   
     <div class="col-6 mx-3">
-      <%= render partial: "events/list", locals: {events: @user.created_events} %>
+
+      <div class="my-2">
+        <h4 class="text-primary">Attended events</h4>
+        <% past_events = @user.attended_events.order(event_on: :desc).where('event_on < ?', Date.today) %>
+        <%= render partial: "events/list", locals: {events: past_events} %> 
+      <div>
+
+      <div class="my-5">
+        <h4 class="text-primary">Events to attend</h4>
+        <% past_events = @user.created_events.order(event_on: :asc).where('event_on >= ?', Date.today) %>
+        <%= render partial: "events/list", locals: {events: past_events} %> 
+      <div>
+
+      <div class="my-5">
+        <h4 class="text-primary">Created events</h4>
+        <%= render partial: "events/list", locals: {events: @user.created_events} %>
+      <div>
+
     </div>
 
   </div>

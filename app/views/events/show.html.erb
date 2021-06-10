@@ -1,9 +1,9 @@
 
 
 <div class="container">
+
   <div class="row">  
     <div class="my-3">
-
 
       <table class="table w-50">
         <tbody>
@@ -44,15 +44,18 @@
         </tbody>
       </table>
 
-      <% unless @event.event_attendings.exists?(attendee_id: Current.user.id) %>
+      <% unless  Current.user.nil? %>
 
-        <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
-is-fullwidth" %>
+        <% unless @event.event_attendings.exists?(attendee_id: Current.user.id) %>
 
-      <% else %>
+          <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
+  is-fullwidth" %>
 
-        <%= button_to "Withdraw", withdraw_path(event_id: @event.id), method: :delete, class: "button is-primary is-large 
-is-fullwidth" %>
+        <% else %>
+
+          <%= button_to "Withdraw", withdraw_path(event_id: @event.id), method: :delete, class: "button is-primary is-large 
+  is-fullwidth" %>
+        <% end %>
 
       <% end %>
 
