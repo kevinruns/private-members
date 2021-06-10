@@ -44,10 +44,17 @@
         </tbody>
       </table>
 
+      <% unless @event.event_attendings.exists?(attendee_id: Current.user.id) %>
 
-      <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
+        <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
 is-fullwidth" %>
 
+      <% else %>
+
+        <%= button_to "Withdraw", withdraw_path(event_id: @event.id), method: :delete, class: "button is-primary is-large 
+is-fullwidth" %>
+
+      <% end %>
 
     </div>
   </div>

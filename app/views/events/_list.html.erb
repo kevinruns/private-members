@@ -6,12 +6,13 @@
 
 <% else %>
 
-  <table class="table">
+  <table class="table w-75">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Location</th>
         <th scope="col">Date</th>
+        <th scope="col">#Attendees</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +21,9 @@
         <th scope="row"><%= link_to f.name, event_path(f.id) %></th>
         <td><%= f.location %></td>           
         <td><%= f.event_on %></td>
+        <td>
+          <%= f.event_attendings.count %>
+        </td>
       </tr>
     </tbody>
     <% end %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   patch "event_attendings", to: "event_attendings#attend", :as => :attend
+  delete "event_attendings", to: "event_attendings#withdraw", :as => :withdraw
 
   get '/users/:id', to: 'users#show', :as => :user
   
