@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'events/new', to: "events#new"
-  post 'events/new', to: "events#create"
+  get 'events', to: "events#index", :as => :events
+  post 'events', to: "events#create"
 
+  get 'events/new', to: "events#new", :as => :new_event
+  get 'events/:id/edit', to: "events#edit", :as => :edit_event
   get 'events/:id', to: "events#show", :as => :event
-  get 'events/index'
+
+  patch 'events/:id', to: "events#update"
+  put 'events/:id', to: "events#update"
+  delete 'events/:id', to: "events#destroy"
+
+
+  resources :testers
 
   get "sign_up", to: "users#new"
   post "sign_up", to: "users#create"

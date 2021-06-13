@@ -46,16 +46,25 @@
 
       <% unless  Current.user.nil? %>
 
+        <div class="my-4">
         <% unless @event.event_attendings.exists?(attendee_id: Current.user.id) %>
-
           <%= button_to "Attend", attend_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
   is-fullwidth" %>
-
         <% else %>
-
           <%= button_to "Withdraw", withdraw_path(event_id: @event.id), method: :delete, class: "button is-primary is-large 
   is-fullwidth" %>
         <% end %>
+        </div>
+
+        <div class="my-5">
+        <% if @event.event_creator_id == Current.user.id %>
+
+          <%= button_to "Edit event", edit_event_path, method: :get, class: "button is-primary is-large 
+  is-fullwidth" %><br>
+          <%= button_to "Delete event", event_path, method: :delete, class: "button is-primary is-large 
+  is-fullwidth" %>
+        <% end %>
+        </div>
 
       <% end %>
 
