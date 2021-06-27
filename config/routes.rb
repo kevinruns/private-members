@@ -17,12 +17,16 @@ Rails.application.routes.draw do
   get "sign_up", to: "users#new"
   post "sign_up", to: "users#create"
 
+  get "users", to: "users#index"
+
   get "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  patch "event_attendings", to: "event_attendings#attend", :as => :attend
-  delete "event_attendings", to: "event_attendings#withdraw", :as => :withdraw
+  patch "event_attendings/invite", to: "event_attendings#invite", :as => :invite
+  patch "event_attendings/accept", to: "event_attendings#accept", :as => :accept
+  patch "event_attendings/attend", to: "event_attendings#attend", :as => :attend
+  delete "event_attendings/withdraw", to: "event_attendings#withdraw", :as => :withdraw
 
   get '/users/:id', to: 'users#show', :as => :user
   

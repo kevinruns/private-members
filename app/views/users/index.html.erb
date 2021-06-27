@@ -1,0 +1,61 @@
+
+
+<div class="d-flex align-items-center justify-content-center">
+<div class="container">
+
+  <div class="row">  
+    <div class="my-3">
+      <h1>
+      <%= Event.find(params[:event_id]).name %> invitation list
+      </h1>
+      Event creator: <%= Event.find(params[:event_id]).event_creator.username %>
+    </div>
+  </div>  
+
+  <div class="row">  
+    <div class="col align-self-center gy-2">
+
+    <% if @users.empty? %>
+      <p>No users registered</p>
+    <% else %>
+    
+      <table class="table w-75">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Invite Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <% attend = EventAttending.find_by(attended_event_id: params[:event_id], attendee_id: user.id) %>
+          <tr>
+            <th scope="row"><%= user.username %></th>
+            <% if attend.nil? %>
+              <td><%= button_to "Invite", invite_path(:event_id => params[:event_id], :user_id => user.id ), method: :patch %></td>
+            <% else %> 
+              <td> <%= attend.status %> </td>
+            <% end %>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    <%end %>
+        
+    </div>
+  </div>
+
+  <div class="row">
+
+   <div class="col align-self-center gy-5">
+
+    <% if Current.user %>
+      <%= link_to "Create event", new_event_path , class: "nav-link" %>
+      <%= link_to "My events", Current.user, class: "nav-link" %>
+    <% end %>
+    </div>
+  </div>
+
+</div>
+</div>
+

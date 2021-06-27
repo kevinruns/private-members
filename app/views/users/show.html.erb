@@ -5,7 +5,7 @@
   <div class="row mt-5">
 
     <div class="col-3 mx-3">
-      <div class="card" style="width: 18rem;">
+      <div class="card">
         <div class="card-header">
           <%= @user.username %><br>
         </div>
@@ -20,14 +20,17 @@
 
       <div class="my-2">
         <h4 class="text-primary">Attended events</h4>
-        <% past_events = @user.attended_events.order(event_on: :desc).past %>
-        <%= render partial: "events/list", locals: {events: past_events} %> 
+        <%= render partial: "events/list", locals: {events: @past_events} %> 
+      <div>
+
+      <div class="my-5">
+        <h4 class="text-primary">Invitations</h4>
+        <%= render partial: "events/list", locals: {events: @invited_events} %> 
       <div>
 
       <div class="my-5">
         <h4 class="text-primary">Events to attend</h4>
-        <% past_events = @user.attended_events.order(event_on: :asc).future %>
-        <%= render partial: "events/list", locals: {events: past_events} %> 
+        <%= render partial: "events/list", locals: {events: @future_events} %> 
       <div>
 
       <div class="my-5">

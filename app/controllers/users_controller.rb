@@ -14,8 +14,20 @@ class UsersController < ApplicationController
   end
 
   def show
+    
     @user = User.find(params[:id])
+    @past_events = @user.attended_events.order(event_on: :desc).past
+    @future_events = @user.attended_events.order(event_on: :asc).future
+
+    @invited_events_id = @user.event_attendings.invited.pluck(:attended_event_id)
+    @invited_events = Event.where(id: @invited_events_id).order(event_on: :asc).future
+
   end
+
+  def index
+    @users = User.all
+  end
+
 
   private
 
