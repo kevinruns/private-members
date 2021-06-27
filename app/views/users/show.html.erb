@@ -21,24 +21,29 @@
       <div class="my-2">
         <h4 class="text-primary">Attended events</h4>
         <%= render partial: "events/list", locals: {events: @past_events} %> 
-      <div>
+      </div>
 
       <div class="my-5">
         <h4 class="text-primary">Invitations</h4>
         <%= render partial: "events/list", locals: {events: @invited_events} %> 
-      <div>
+      </div>
 
       <div class="my-5">
         <h4 class="text-primary">Events to attend</h4>
         <%= render partial: "events/list", locals: {events: @future_events} %> 
-      <div>
+      </div>
 
       <div class="my-5">
         <h4 class="text-primary">Created events</h4>
         <%= render partial: "events/list", locals: {events: @user.created_events} %>
-      <div>
+      </div>
+
+      <% if Current.user %>
+        <%= link_to "Create event", new_event_path , class: "nav-link px-0" %>
+      <% end %>
 
     </div>
+
 
   </div>
 </div>
