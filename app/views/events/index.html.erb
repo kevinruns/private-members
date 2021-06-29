@@ -10,12 +10,21 @@
 
   <div class="row">  
     <div class="col align-self-center gy-5">
-
-      <% events_ordered = @events.order(event_on: :desc) %>
+      <h3>Upcoming events</h3>
+      <% events_ordered = @events.future.order(event_on: :asc) %>
       <%= render partial: "events/list", locals: {events: events_ordered} %>
-
     </div>
   </div>
+
+  <div class="row">  
+    <div class="col align-self-center gy-5">
+      <h3>Past events</h3>
+      <% events_ordered = @events.past.order(event_on: :asc) %>
+      <%= render partial: "events/list", locals: {events: events_ordered} %>
+    </div>
+  </div>
+
+
 
   <div class="row">
 
