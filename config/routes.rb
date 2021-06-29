@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   put 'events/:id', to: "events#update"
   delete 'events/:id', to: "events#destroy"
 
-
   resources :testers
 
   get "sign_up", to: "users#new"

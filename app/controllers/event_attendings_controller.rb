@@ -35,10 +35,10 @@ class EventAttendingsController < ApplicationController
     if event_attending.invited?
       event_attending.accepted!
       flash[:notice] = "Accepted event!"
-      redirect_to users_path(event_id: params[:event_id])
+      redirect_to event_path(id: params[:event_id])
     else
       flash[:alert] = 'Problem. Not invited!'
-      redirect_to users_path(event_id: params[:event_id])
+      redirect_to event_path(id: params[:event_id])
     end
   end
 

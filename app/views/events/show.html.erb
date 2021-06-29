@@ -34,7 +34,7 @@
           <tr>
             <th>Event Attendees</th>
               <td>
-              <% @event.event_attendings.each do |f| %>
+              <% @event.event_attendings.accepted.each do |f| %>
                 <%= User.find( f.attendee_id ).username %>
                 <br>
               <% end %>
@@ -47,21 +47,14 @@
       <% unless  Current.user.nil? %>
 
         <div class="my-4">
-
         <% if  @event.event_attendings.invited.exists?(attendee_id: Current.user.id) %>
-
           <%= button_to "Accept invitation", accept_path(event_id: @event.id), method: :patch, class: "button is-primary is-large 
   is-fullwidth" %>
-
         <% elsif @event.event_attendings.accepted.exists?(attendee_id: Current.user.id) %>
-
           <%= button_to "Withdraw", withdraw_path(event_id: @event.id), method: :delete, class: "button is-primary is-large 
   is-fullwidth" %>
-
         <% end %>
-
         </div>
-
 
         <div class="my-5">
         <% if @event.event_creator_id == Current.user.id %>
@@ -73,6 +66,11 @@
   is-fullwidth" %>
         <% end %>
         </div>
+
+        <% if Current.user %>
+          <%= link_to "Create event", new_event_path , class: "nav-link" %>
+          <%= link_to "My events", Current.user, class: "nav-link" %>
+        <% end %>
 
       <% end %>
 
