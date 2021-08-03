@@ -16,7 +16,7 @@ import "bootstrap;"
 
 // import the app/assets/stylesheets/application.css 
 // file from the previous step.
-import "/home/kevin/the_odin_project/odin_on_rails/private-events/assets/stylesheets/application;"
+// import "../../assets/stylesheets/application;"
 
 
 
